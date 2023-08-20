@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: rate-limiting-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+  redis:
+    container_name: rate-limiting-redis
+    image: redis:7-alpine
+
+    ports:
+      - "6379:6379"
